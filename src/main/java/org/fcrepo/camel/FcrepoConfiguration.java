@@ -70,6 +70,9 @@ public class FcrepoConfiguration implements Cloneable {
     @UriParam
     private PlatformTransactionManager transactionManager = null;
 
+    @UriParam
+    private Boolean preemptiveAuth = true;
+
     /**
      * Create a new FcrepoConfiguration object
      */
@@ -93,7 +96,7 @@ public class FcrepoConfiguration implements Cloneable {
 
    /**
      * baseUrl setter
-     * 
+     *
      * @param url the baseUrl string
      */
     public void setBaseUrl(final String url) {
@@ -147,7 +150,7 @@ public class FcrepoConfiguration implements Cloneable {
 
     /**
      * authUsername setter
-     * 
+     *
      * @param username used for repository authentication
      */
     public void setAuthUsername(final String username) {
@@ -165,7 +168,7 @@ public class FcrepoConfiguration implements Cloneable {
 
     /**
      * authPassword setter
-     * 
+     *
      * @param password used for repository authentication
      */
     public void setAuthPassword(final String password) {
@@ -183,7 +186,7 @@ public class FcrepoConfiguration implements Cloneable {
 
     /**
      * authHost setter
-     * 
+     *
      * @param host used for authentication
      */
     public void setAuthHost(final String host) {
@@ -201,7 +204,7 @@ public class FcrepoConfiguration implements Cloneable {
 
     /**
      * metadata setter
-     * 
+     *
      * @param metadata whether to retrieve rdf metadata for non-rdf nodes
      */
     public void setMetadata(final Boolean metadata) {
@@ -237,7 +240,7 @@ public class FcrepoConfiguration implements Cloneable {
 
     /**
      * transform setter
-     * 
+     *
      * @param transform define an LD-Path transform program for converting RDF to JSON
      */
     public void setTransform(final String transform) {
@@ -255,7 +258,7 @@ public class FcrepoConfiguration implements Cloneable {
 
     /**
      * tombstone setter
-     * 
+     *
      * @param tombstone whether to access the /fcr:tombstone endpoint for a resource
      */
     public void setTombstone(final Boolean tombstone) {
@@ -282,7 +285,7 @@ public class FcrepoConfiguration implements Cloneable {
 
     /**
      * preferInclude getter
-     * 
+     *
      * @return the URI(s) that populate the include section in a Prefer header
      */
     public String getPreferInclude() {
@@ -344,5 +347,21 @@ public class FcrepoConfiguration implements Cloneable {
         return fixity;
     }
 
+    /**
+     * preemptiveAuth setter
+     *
+     * @param preemptiveAuth whether to use preemptive authorization
+     */
+    public void setPreemptiveAuth(final Boolean preemptiveAuth) {
+        this.preemptiveAuth = preemptiveAuth;
+    }
 
+    /**
+     * preemptiveAuth getter
+     *
+     * @return whether to use preemptive authorization
+     */
+    public Boolean getPreemptiveAuth() {
+        return this.preemptiveAuth;
+    }
 }

@@ -61,9 +61,9 @@ public class FcrepoClient {
      * @param throwExceptionOnFailure whether to throw an exception on any non-2xx or 3xx HTTP responses
      */
     public FcrepoClient(final String username, final String password, final String host,
-            final Boolean throwExceptionOnFailure) {
+            final Boolean preemptiveAuth, final Boolean throwExceptionOnFailure) {
 
-        final FcrepoHttpClientBuilder client = new FcrepoHttpClientBuilder(username, password, host);
+        final FcrepoHttpClientBuilder client = new FcrepoHttpClientBuilder(username, password, host, preemptiveAuth);
 
         this.throwExceptionOnFailure = throwExceptionOnFailure;
         this.httpclient = client.build();

@@ -45,6 +45,8 @@ public class FcrepoTransactionManager extends AbstractPlatformTransactionManager
 
     private String authHost;
 
+    private Boolean preemptiveAuth;
+
     private static final Logger LOGGER = getLogger(FcrepoTransactionManager.class);
 
     /**
@@ -127,6 +129,24 @@ public class FcrepoTransactionManager extends AbstractPlatformTransactionManager
         return authHost;
     }
 
+    /**
+     * Set the preemptiveAuth for the transaction manager.
+     *
+     * @param preemptiveAuth whether to use preemptive authentication
+     */
+    public void setPreemptiveAuth(final Boolean preemptiveAuth) {
+        this.preemptiveAuth = preemptiveAuth;
+    }
+
+    /**
+     * Get the preemptiveAuth for the transaction manager.
+     *
+     * @return whether to use preemptive authentication
+     */
+    public Boolean getPreemptiveAuth() {
+        return preemptiveAuth;
+    }
+
     @Override
     protected void doBegin(final Object transaction, final TransactionDefinition definition) {
         final FcrepoResponse response;
@@ -193,6 +213,7 @@ public class FcrepoTransactionManager extends AbstractPlatformTransactionManager
                     authUsername,
                     authPassword,
                     authHost,
+                    preemptiveAuth,
                     throwExceptionOnFailure);
         }
         return client;

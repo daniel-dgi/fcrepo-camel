@@ -69,7 +69,7 @@ public class FcrepoClientTest {
 
     @Before
     public void setUp() throws IOException {
-        testClient = new FcrepoClient(null, null, null, true);
+        testClient = new FcrepoClient(null, null, null, false, true);
         setField(testClient, "httpclient", mockHttpclient);
     }
 

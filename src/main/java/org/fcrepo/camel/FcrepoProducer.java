@@ -66,6 +66,7 @@ public class FcrepoProducer extends DefaultProducer {
                 endpoint.getAuthUsername(),
                 endpoint.getAuthPassword(),
                 endpoint.getAuthHost(),
+                endpoint.getPreemptiveAuth(),
                 endpoint.getThrowExceptionOnFailure());
 
     }

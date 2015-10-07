@@ -151,7 +151,7 @@ public class FcrepoEndpoint extends DefaultEndpoint {
 
     /**
      * configuration setter
-     * 
+     *
      * @param config The FcrepoConfiguration
      */
     public void setConfiguration(final FcrepoConfiguration config) {
@@ -218,7 +218,7 @@ public class FcrepoEndpoint extends DefaultEndpoint {
 
     /**
      * contentType setter
-     * 
+     *
      * @param type the mime-type used with Content-Type headers
      */
     @ManagedAttribute(description = "Content-Type: Header")
@@ -238,7 +238,7 @@ public class FcrepoEndpoint extends DefaultEndpoint {
 
     /**
      * authUsername setter
-     * 
+     *
      * @param username used for repository authentication
      */
     @ManagedAttribute(description = "Username for authentication")
@@ -258,7 +258,7 @@ public class FcrepoEndpoint extends DefaultEndpoint {
 
     /**
      * authPassword setter
-     * 
+     *
      * @param password used for repository authentication
      */
     @ManagedAttribute(description = "Password for authentication")
@@ -278,7 +278,7 @@ public class FcrepoEndpoint extends DefaultEndpoint {
 
     /**
      * authHost setter
-     * 
+     *
      * @param host realm used for repository authentication
      */
     @ManagedAttribute(description = "Hostname for authentication")
@@ -338,7 +338,7 @@ public class FcrepoEndpoint extends DefaultEndpoint {
 
     /**
      * transform setter
-     * 
+     *
      * @param transform define an LD-Path transform program for converting RDF to JSON
      */
     @ManagedAttribute(description = "The LDPath transform program to use")
@@ -379,7 +379,7 @@ public class FcrepoEndpoint extends DefaultEndpoint {
 
     /**
      * tombstone setter
-     * 
+     *
      * @param tombstone whether to access the /fcr:tombstone endpoint for a resource
      */
     @ManagedAttribute(description = "Whether to use the /fcr:tombstone endpoint on objects")
@@ -435,5 +435,25 @@ public class FcrepoEndpoint extends DefaultEndpoint {
     @ManagedAttribute(description = "Whether to include a Prefer: return=representation; omit=\"URI\" header")
     public String getPreferOmit() {
         return getConfiguration().getPreferOmit();
+    }
+
+    /**
+     * preemptiveAuth setter
+     *
+     * @param preemptiveAuth whether to access the /fcr:tombstone endpoint for a resource
+     */
+    @ManagedAttribute(description = "Whether to use preemptive authorization")
+    public void setPreemptiveAuth(final Boolean preemptiveAuth) {
+        getConfiguration().setPreemptiveAuth(preemptiveAuth);
+    }
+
+    /**
+     * preemptiveAuth getter
+     *
+     * @return whether to access the /fcr:tombstone endpoint for a resource
+     */
+    @ManagedAttribute(description = "Whether to use preemptive authorization")
+    public Boolean getPreemptiveAuth() {
+        return getConfiguration().getPreemptiveAuth();
     }
 }

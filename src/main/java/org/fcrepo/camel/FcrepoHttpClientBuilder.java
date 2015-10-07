@@ -18,6 +18,7 @@ package org.fcrepo.camel;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.slf4j.LoggerFactory.getLogger;
 
+import org.apache.camel.component.http4.PreemptiveAuthInterceptor;
 import org.apache.http.HttpHost;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
@@ -41,6 +42,8 @@ public class FcrepoHttpClientBuilder {
 
     private String host;
 
+    private Boolean preemptiveAuth;
+
     private static final Logger LOGGER = getLogger(FcrepoHttpClientBuilder.class);
 
     /**
@@ -50,11 +53,16 @@ public class FcrepoHttpClientBuilder {
      * @param username an optional username for authentication
      * @param password an optional password for authentication
      * @param host an optional realm for authentication
+     * @param preemptiveAuth whether to use preemptive authentication
      */
-    public FcrepoHttpClientBuilder(final String username, final String password, final String host) {
+    public FcrepoHttpClientBuilder(final String username,
+                                   final String password,
+                                   final String host,
+                                   final Boolean preemptiveAuth) {
         this.username = username;
         this.password = password;
         this.host = host;
+        this.preemptiveAuth = preemptiveAuth;
     }
 
     /**
@@ -82,6 +90,7 @@ public class FcrepoHttpClientBuilder {
                     new UsernamePasswordCredentials(username, password));
             return HttpClients.custom()
                     .setDefaultCredentialsProvider(credsProvider)
+                    .addInterceptorFirst(new PreemptiveAuthInterceptor())
                     .build();
         }
     }

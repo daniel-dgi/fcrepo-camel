@@ -63,7 +63,7 @@ public class FcrepoClientAuthTest {
         final URI uri = create(baseUrl);
         final ByteArrayEntity entity = new ByteArrayEntity(rdfXml.getBytes());
 
-        testClient = new FcrepoClient("user", "pass", null, true);
+        testClient = new FcrepoClient("user", "pass", null, true, true);
         setField(testClient, "httpclient", mockHttpclient);
         entity.setContentType(RDF_XML);
         doSetupMockRequest(RDF_XML, entity, status);
@@ -83,7 +83,7 @@ public class FcrepoClientAuthTest {
         final URI uri = create(baseUrl);
         final ByteArrayEntity entity = new ByteArrayEntity(rdfXml.getBytes());
 
-        testClient = new FcrepoClient("user", "pass", "localhost", true);
+        testClient = new FcrepoClient("user", "pass", "localhost", true, true);
         setField(testClient, "httpclient", mockHttpclient);
         entity.setContentType(RDF_XML);
         doSetupMockRequest(RDF_XML, entity, status);
@@ -103,7 +103,7 @@ public class FcrepoClientAuthTest {
         final URI uri = create(baseUrl);
         final ByteArrayEntity entity = new ByteArrayEntity(rdfXml.getBytes());
 
-        testClient = new FcrepoClient("user", null, null, true);
+        testClient = new FcrepoClient("user", null, null, true, true);
         setField(testClient, "httpclient", mockHttpclient);
         entity.setContentType(RDF_XML);
         doSetupMockRequest(RDF_XML, entity, status);
