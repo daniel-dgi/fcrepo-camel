@@ -18,6 +18,7 @@ package org.fcrepo.camel;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.slf4j.LoggerFactory.getLogger;
 
+import org.apache.camel.component.http4.PreemptiveAuthInterceptor;
 import org.apache.http.HttpHost;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
@@ -82,6 +83,7 @@ public class FcrepoHttpClientBuilder {
                     new UsernamePasswordCredentials(username, password));
             return HttpClients.custom()
                     .setDefaultCredentialsProvider(credsProvider)
+                    .addInterceptorFirst(new PreemptiveAuthInterceptor())
                     .build();
         }
     }
